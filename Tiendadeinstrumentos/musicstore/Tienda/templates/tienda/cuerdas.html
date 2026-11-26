@@ -1,0 +1,40 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <h1>🎸 Instrumentos de Cuerda</h1>
+
+    <div class="productos">
+
+        {% for instrumento in instrumentos %}
+
+        <div class="producto">
+
+            <h2>{{ instrumento.nombre }}</h2>
+
+            <p>
+                Marca: {{ instrumento.marca }}
+            </p>
+
+            <p class="precio">
+                ${{ instrumento.precio }} MXN
+            </p>
+
+            <a
+                class="boton"
+                href="{% url 'comprar' %}?nombre={{ instrumento.nombre }}&precio={{ instrumento.precio }}"
+            >
+                Comprar
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

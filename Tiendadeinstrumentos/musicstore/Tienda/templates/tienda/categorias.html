@@ -1,0 +1,42 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <h1>🎼 Categorías</h1>
+
+    <div class="categorias">
+
+        <div class="categoria">
+            <h2>🎷 Viento</h2>
+            <p>Saxofones, tubas, trompetas y más.</p>
+
+            <a class="boton" href="{% url 'viento' %}">
+                Ver instrumentos
+            </a>
+        </div>
+
+        <div class="categoria">
+            <h2>🎹 Teclas</h2>
+            <p>Pianos y teclados de diferentes marcas.</p>
+
+            <a class="boton" href="{% url 'teclas' %}">
+                Ver instrumentos
+            </a>
+        </div>
+
+        <div class="categoria">
+            <h2>🎸 Cuerdas</h2>
+            <p>Guitarras Gibson, Yamaha y más.</p>
+
+            <a class="boton" href="{% url 'cuerdas' %}">
+                Ver instrumentos
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

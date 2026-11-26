@@ -1,0 +1,51 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <div class="hero-etiqueta">
+                TIENDA DE INSTRUMENTOS MUSICALES
+            </div>
+
+            <h1>
+                Tu música.<br>
+                Tu instrumento.<br>
+                <span class="amarillo">Tu sonido.</span>
+            </h1>
+
+            <p>
+                Encuentra guitarras, teclados, baterías,
+                instrumentos de viento y equipo profesional
+                para llevar tu música al siguiente nivel.
+            </p>
+
+            <div class="botones">
+
+                <a
+                    class="boton boton-amarillo"
+                    href="{% url 'categorias' %}"
+                >
+                    Ver productos
+                </a>
+
+                <a
+                    class="boton boton-transparente"
+                    href="{% url 'categorias' %}"
+                >
+                    Explorar categorías
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

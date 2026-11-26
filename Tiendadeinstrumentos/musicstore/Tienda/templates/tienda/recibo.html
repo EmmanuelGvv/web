@@ -1,0 +1,38 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+
+<div class="contenedor">
+
+    <div class="recibo">
+
+        <h1>🎉 ¡Gracias por su compra!</h1>
+
+        <p>Su compra ha sido registrada correctamente.</p>
+
+        <hr>
+
+        <h2>Recibo</h2>
+
+        <p>
+            <strong>Instrumento:</strong>
+            {{ nombre }}
+        </p>
+
+        <p class="precio">
+            Total: ${{ precio }} MXN
+        </p>
+
+        <p>
+            Gracias por comprar en MusicStore.
+        </p>
+
+        <a class="boton" href="{% url 'inicio' %}">
+            Volver al inicio
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

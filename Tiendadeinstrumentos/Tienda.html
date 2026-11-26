@@ -1,0 +1,1703 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MUSICSTORE | Instrumentos Musicales</title>
+
+
+    <style>
+
+        /* ==============================
+           CONFIGURACIÓN GENERAL
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #171717;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        header {
+            background: #111;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,.25);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c400;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #ddd;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #f5c400;
+        }
+
+        .carrito-btn {
+            border: none;
+            background: #f5c400;
+            color: #111;
+            padding: 11px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        /* ==============================
+           INICIO
+        ============================== */
+
+        .inicio {
+            min-height: 590px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.76),
+                    rgba(0,0,0,.76)
+                ),
+                url("https://images.unsplash.com/photo-1511379938547-c1f69419868d")
+                center/cover;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .inicio-contenido {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .inicio small {
+            color: #f5c400;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .inicio h1 {
+            font-size: 68px;
+            line-height: 1;
+            max-width: 800px;
+            margin: 22px 0;
+        }
+
+        .inicio h1 span {
+            color: #f5c400;
+        }
+
+        .inicio p {
+            max-width: 620px;
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .botones {
+            display: flex;
+            gap: 15px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-amarillo {
+            background: #f5c400;
+            color: #111;
+        }
+
+        .btn-borde {
+            border: 1px solid #777;
+            color: white;
+        }
+
+
+        /* ==============================
+           SECCIONES
+        ============================== */
+
+        .seccion {
+            max-width: 1200px;
+            margin: auto;
+            padding: 85px 20px;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo small {
+            color: #999;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .titulo h2 {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .titulo p {
+            color: #777;
+            max-width: 600px;
+            margin: 15px auto;
+            line-height: 1.6;
+        }
+
+
+        /* ==============================
+           CATEGORÍAS
+        ============================== */
+
+        .categorias {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .categoria {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .categoria:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0,0,0,.10);
+        }
+
+        .icono {
+            font-size: 58px;
+            margin-bottom: 18px;
+        }
+
+        .categoria h3 {
+            font-size: 19px;
+        }
+
+        .categoria p {
+            color: #777;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+
+        /* ==============================
+           OFERTAS
+        ============================== */
+
+        .ofertas {
+            background: #111;
+            color: white;
+        }
+
+        .ofertas .titulo small {
+            color: #f5c400;
+        }
+
+        .ofertas .titulo p {
+            color: #aaa;
+        }
+
+        .ofertas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .oferta {
+            background: white;
+            color: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .oferta:hover {
+            transform: translateY(-6px);
+        }
+
+        .oferta-imagen {
+            height: 220px;
+            background: #eee;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .oferta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .oferta:hover img {
+            transform: scale(1.07);
+        }
+
+        .descuento {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #f5c400;
+            color: #111;
+            padding: 7px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .oferta-info {
+            padding: 20px;
+        }
+
+        .oferta-info small {
+            color: #999;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .oferta-info h3 {
+            margin: 8px 0;
+        }
+
+        .precio-anterior {
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .precio-oferta {
+            color: #111;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .comprar {
+            width: 100%;
+            border: none;
+            background: #111;
+            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .comprar:hover {
+            background: #f5c400;
+            color: #111;
+        }
+
+
+        /* ==============================
+           CARRITO
+        ============================== */
+
+        .carrito-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+
+            width: 400px;
+            height: 100vh;
+
+            background: white;
+
+            z-index: 3000;
+
+            box-shadow: -5px 0 30px rgba(0,0,0,.25);
+
+            padding: 25px;
+
+            transition: .4s;
+
+            overflow-y: auto;
+        }
+
+        .carrito-panel.abierto {
+            right: 0;
+        }
+
+        .cerrar {
+            float: right;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .carrito-panel h2 {
+            margin-bottom: 30px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #ddd;
+        }
+
+        .eliminar {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 30px;
+
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            background: #080808;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+
+            gap: 50px;
+        }
+
+        footer h3 {
+            margin-bottom: 18px;
+        }
+
+        footer p,
+        footer a {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            display: block;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 40px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #292929;
+
+            text-align: center;
+
+            color: #666;
+
+            font-size: 12px;
+        }
+
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media(max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .inicio h1 {
+                font-size: 50px;
+            }
+
+            .categorias,
+            .ofertas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            .inicio {
+                min-height: 520px;
+            }
+
+            .inicio h1 {
+                font-size: 40px;
+            }
+
+            .botones {
+                flex-direction: column;
+            }
+
+            .categorias,
+            .ofertas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carrito-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     MENÚ PRINCIPAL
+================================================= -->
+
+<header>
+
+    <div class="navbar">
+
+        <a href="#inicio" class="logo">
+            ♪ <span>MUSIC</span>STORE
+        </a>
+
+
+        <nav>
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#categorias">
+                Categorías
+            </a>
+
+            <a href="#ofertas">
+                Ofertas
+            </a>
+
+        </nav>
+
+
+        <button
+            class="carrito-btn"
+            onclick="abrirCarrito()"
+        >
+
+            🛒 Carrito
+            (<span id="cantidad">0</span>)
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =================================================
+     INICIO
+================================================= -->
+
+<section
+    class="inicio"
+    id="inicio"
+>
+
+    <div class="inicio-contenido">
+
+        <small>
+            BIENVENIDO A MUSICSTORE
+        </small>
+
+
+        <h1>
+
+            Todo para
+            <br>
+
+            <span>hacer música.</span>
+
+        </h1>
+
+
+        <p>
+
+            Bienvenido a MUSICSTORE, tu tienda de
+            instrumentos musicales. Aquí encontrarás
+            guitarras, teclados, baterías, instrumentos
+            de viento y mucho más.
+
+        </p>
+
+
+        <div class="botones">
+
+            <a
+                href="#categorias"
+                class="btn btn-amarillo"
+            >
+                Ver instrumentos
+            </a>
+
+
+            <a
+                href="#ofertas"
+                class="btn btn-borde"
+            >
+                Ver ofertas
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     CATEGORÍAS
+================================================= -->
+
+<section
+    class="seccion"
+    id="categorias"
+>
+
+    <div class="titulo">
+
+        <small>
+            NUESTROS INSTRUMENTOS
+        </small>
+
+        <h2>
+            Categorías
+        </h2>
+
+        <p>
+
+            Explora los diferentes tipos de instrumentos
+            que puedes encontrar en MUSICSTORE.
+
+        </p>
+
+    </div>
+
+
+    <div class="categorias">
+
+
+        <!-- GUITARRA -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎸
+            </div>
+
+            <h3>
+                Guitarras
+            </h3>
+
+            <p>
+                Guitarras eléctricas,
+                acústicas y clásicas.
+            </p>
+
+        </div>
+
+
+        <!-- TECLADO -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎹
+            </div>
+
+            <h3>
+                Teclados
+            </h3>
+
+            <p>
+                Teclados, sintetizadores
+                y pianos digitales.
+            </p>
+
+        </div>
+
+
+        <!-- BATERIA -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🥁
+            </div>
+
+            <h3>
+                Baterías
+            </h3>
+
+            <p>
+                Baterías acústicas
+                y electrónicas.
+            </p>
+
+        </div>
+
+
+        <!-- SAXOFON -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎷
+            </div>
+
+            <h3>
+                Saxofones
+            </h3>
+
+            <p>
+                Saxofones altos,
+                tenores y profesionales.
+            </p>
+
+        </div>
+
+
+        <!-- BAJO -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎸
+            </div>
+
+            <h3>
+                Bajos
+            </h3>
+
+            <p>
+                Bajos eléctricos
+                de 4 y 5 cuerdas.
+            </p>
+
+        </div>
+
+
+        <!-- VIOLIN -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎻
+            </div>
+
+            <h3>
+                Violines
+            </h3>
+
+            <p>
+                Violines para estudiantes
+                y profesionales.
+            </p>
+
+        </div>
+
+
+        <!-- TROMPETA -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎺
+            </div>
+
+            <h3>
+                Trompetas
+            </h3>
+
+            <p>
+                Instrumentos de metal
+                para diferentes estilos.
+            </p>
+
+        </div>
+
+
+        <!-- FLAUTA -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🪈
+            </div>
+
+            <h3>
+                Flautas
+            </h3>
+
+            <p>
+                Flautas para principiantes
+                y músicos avanzados.
+            </p>
+
+        </div>
+
+
+        <!-- UKULELE -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎶
+            </div>
+
+            <h3>
+                Ukuleles
+            </h3>
+
+            <p>
+                Ukuleles soprano,
+                concierto y tenor.
+            </p>
+
+        </div>
+
+
+        <!-- PERCUSION -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🪘
+            </div>
+
+            <h3>
+                Percusión
+            </h3>
+
+            <p>
+                Cajones, congas y
+                otros instrumentos.
+            </p>
+
+        </div>
+
+
+        <!-- ARMONICAS -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🎵
+            </div>
+
+            <h3>
+                Armónicas
+            </h3>
+
+            <p>
+                Armónicas para blues,
+                rock y música popular.
+            </p>
+
+        </div>
+
+
+        <!-- ACORDEON -->
+
+        <div class="categoria">
+
+            <div class="icono">
+                🪗
+            </div>
+
+            <h3>
+                Acordeones
+            </h3>
+
+            <p>
+                Acordeones para música
+                regional y popular.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     OFERTAS
+================================================= -->
+
+<section
+    class="ofertas"
+    id="ofertas"
+>
+
+    <div class="seccion">
+
+        <div class="titulo">
+
+            <small>
+                PRECIOS ESPECIALES
+            </small>
+
+            <h2>
+                Instrumentos en oferta
+            </h2>
+
+            <p>
+
+                Encuentra instrumentos más económicos
+                para comenzar o ampliar tu colección.
+
+            </p>
+
+        </div>
+
+
+        <div class="ofertas-grid">
+
+
+            <!-- OFERTA 1 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -20%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1550985616-10810253b84d"
+                        alt="Ukulele"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Ukulele
+                    </small>
+
+                    <h3>
+                        Ukulele Soprano
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $2,500
+                    </span>
+
+                    <span class="precio-oferta">
+                        $1,999
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Ukulele Soprano',
+                            1999
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 2 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -18%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1601058268499-e52658b8a8e1"
+                        alt="Flauta"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Viento
+                    </small>
+
+                    <h3>
+                        Flauta Escolar
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $1,200
+                    </span>
+
+                    <span class="precio-oferta">
+                        $999
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Flauta Escolar',
+                            999
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 3 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -15%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1513883049090-d0b7439799bf"
+                        alt="Armónica"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Viento
+                    </small>
+
+                    <h3>
+                        Armónica Blues
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $850
+                    </span>
+
+                    <span class="precio-oferta">
+                        $699
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Armónica Blues',
+                            699
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 4 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -25%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f"
+                        alt="Micrófono"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Audio
+                    </small>
+
+                    <h3>
+                        Micrófono Dinámico
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $1,600
+                    </span>
+
+                    <span class="precio-oferta">
+                        $1,199
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Micrófono Dinámico',
+                            1199
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 5 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -20%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9"
+                        alt="Violín"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Cuerdas
+                    </small>
+
+                    <h3>
+                        Violín de Estudio
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $3,500
+                    </span>
+
+                    <span class="precio-oferta">
+                        $2,799
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Violín de Estudio',
+                            2799
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 6 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -17%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1543443258-9e0a6b0c8e6b"
+                        alt="Guitarra clásica"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Guitarra
+                    </small>
+
+                    <h3>
+                        Guitarra Clásica
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $3,000
+                    </span>
+
+                    <span class="precio-oferta">
+                        $2,499
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Guitarra Clásica',
+                            2499
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 7 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -22%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7"
+                        alt="Percusión"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Percusión
+                    </small>
+
+                    <h3>
+                        Cajón Peruano
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $2,000
+                    </span>
+
+                    <span class="precio-oferta">
+                        $1,549
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Cajón Peruano',
+                            1549
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- OFERTA 8 -->
+
+            <div class="oferta">
+
+                <div class="oferta-imagen">
+
+                    <span class="descuento">
+                        -19%
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1507838153414-b4b713384a76"
+                        alt="Teclado"
+                    >
+
+                </div>
+
+
+                <div class="oferta-info">
+
+                    <small>
+                        Teclado
+                    </small>
+
+                    <h3>
+                        Teclado Musical
+                    </h3>
+
+                    <span class="precio-anterior">
+                        $4,000
+                    </span>
+
+                    <span class="precio-oferta">
+                        $3,249
+                    </span>
+
+                    <button
+                        class="comprar"
+                        onclick="agregar(
+                            'Teclado Musical',
+                            3249
+                        )"
+                    >
+                        Agregar al carrito
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     FOOTER
+================================================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="logo">
+                ♪ <span>MUSIC</span>STORE
+            </div>
+
+            <p>
+
+                Tu tienda de instrumentos musicales.
+                Encuentra el instrumento perfecto para
+                expresar tu música.
+
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Instrumentos
+            </h3>
+
+            <a href="#categorias">
+                Guitarras
+            </a>
+
+            <a href="#categorias">
+                Teclados
+            </a>
+
+            <a href="#categorias">
+                Baterías
+            </a>
+
+            <a href="#categorias">
+                Violines
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Contacto
+            </h3>
+
+            <p>
+                📞 834 123 4567
+            </p>
+
+            <p>
+                📧 contacto@musicstore.com
+            </p>
+
+            <p>
+                📍 México
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 MUSICSTORE |
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =================================================
+     CARRITO
+================================================= -->
+
+<div
+    class="carrito-panel"
+    id="carritoPanel"
+>
+
+    <button
+        class="cerrar"
+        onclick="cerrarCarrito()"
+    >
+        ×
+    </button>
+
+
+    <h2>
+        🛒 Mi carrito
+    </h2>
+
+
+    <div id="listaCarrito">
+
+        <p>
+            Tu carrito está vacío.
+        </p>
+
+    </div>
+
+
+    <div class="total">
+
+        <span>
+            Total:
+        </span>
+
+        <span id="total">
+            $0
+        </span>
+
+    </div>
+
+
+    <button
+        class="comprar"
+        onclick="finalizarCompra()"
+    >
+
+        Finalizar compra
+
+    </button>
+
+</div>
+
+
+
+<script>
+
+    /* =================================
+       CARRITO
+    ================================= */
+
+    let carrito = [];
+
+
+    function agregar(nombre, precio) {
+
+        carrito.push({
+
+            nombre: nombre,
+            precio: precio
+
+        });
+
+
+        actualizarCarrito();
+
+
+        alert(
+            nombre +
+            " se agregó al carrito."
+        );
+
+    }
+
+
+
+    function actualizarCarrito() {
+
+        const lista =
+            document.getElementById(
+                "listaCarrito"
+            );
+
+
+        const cantidad =
+            document.getElementById(
+                "cantidad"
+            );
+
+
+        const total =
+            document.getElementById(
+                "total"
+            );
+
+
+        cantidad.innerText =
+            carrito.length;
+
+
+        if (carrito.length === 0) {
+
+            lista.innerHTML =
+                "<p>Tu carrito está vacío.</p>";
+
+            total.innerText =
+                "$0";
+
+            return;
+
+        }
+
+
+        let html = "";
+
+        let suma = 0;
+
+
+        carrito.forEach(
+            function(producto, indice) {
+
+                suma += producto.precio;
+
+
+                html += `
+
+                    <div class="item">
+
+                        <div>
+
+                            <strong>
+                                ${producto.nombre}
+                            </strong>
+
+                            <br>
+
+                            $${producto.precio.toLocaleString()}
+
+                        </div>
+
+
+                        <button
+                            class="eliminar"
+                            onclick="eliminar(${indice})"
+                        >
+                            🗑️
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        lista.innerHTML =
+            html;
+
+
+        total.innerText =
+            "$" + suma.toLocaleString();
+
+    }
+
+
+
+    function eliminar(indice) {
+
+        carrito.splice(indice, 1);
+
+        actualizarCarrito();
+
+    }
+
+
+
+    function abrirCarrito() {
+
+        document
+            .getElementById("carritoPanel")
+            .classList.add("abierto");
+
+    }
+
+
+
+    function cerrarCarrito() {
+
+        document
+            .getElementById("carritoPanel")
+            .classList.remove("abierto");
+
+    }
+
+
+
+    function finalizarCompra() {
+
+        if (carrito.length === 0) {
+
+            alert(
+                "No tienes instrumentos en el carrito."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "¡Gracias por tu compra en MUSICSTORE!"
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
+```
